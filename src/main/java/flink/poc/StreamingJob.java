@@ -1,6 +1,4 @@
-package poc;
-
-/**
+/*
  * Licensed to the Apache Software Foundation (ASF) under one
  * or more contributor license agreements.  See the NOTICE file
  * distributed with this work for additional information
@@ -18,41 +16,35 @@ package poc;
  * limitations under the License.
  */
 
-import org.apache.flink.api.java.ExecutionEnvironment;
+package flink.poc;
+
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 
 /**
- * Skeleton for a Flink Batch Job.
+ * Skeleton for a Flink Streaming Job.
  *
- * <p>For a full example of a Flink Batch Job, see the WordCountJob.java file in the
- * same package/directory or have a look at the website.
+ * <p>For a tutorial how to write a Flink streaming application, check the
+ * tutorials and examples on the <a href="http://flink.apache.org/docs/stable/">Flink Website</a>.
  *
- * <p>You can also generate a .jar file that you can submit on your Flink
- * cluster.
- * Just type
- * 		mvn clean package
- * in the projects root directory.
- * You will find the jar in
- * 		target/flink-1.0-SNAPSHOT.jar
- * From the CLI you can then run
- * 		./bin/flink run -c poc.BatchJob target/flink-1.0-SNAPSHOT.jar
+ * <p>To package your appliation into a JAR file for execution, run
+ * 'mvn clean package' on the command line.
  *
- * <p>For more information on the CLI see:
- *
- * <p>http://flink.apache.org/docs/latest/apis/cli.html
+ * <p>If you change the name of the main class (with the public static void main(String[] args))
+ * method, change the respective entry in the POM.xml file (simply search for 'mainClass').
  */
-public class BatchJob {
+public class StreamingJob {
 
 	public static void main(String[] args) throws Exception {
-		// set up the batch execution environment
-		final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+		// set up the streaming execution environment
+		final StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
-		/**
+		/*
 		 * Here, you can start creating your execution plan for Flink.
 		 *
 		 * Start with getting some data from the environment, like
 		 * 	env.readTextFile(textPath);
 		 *
-		 * then, transform the resulting DataSet<String> using operations
+		 * then, transform the resulting DataStream<String> using operations
 		 * like
 		 * 	.filter()
 		 * 	.flatMap()
@@ -62,15 +54,11 @@ public class BatchJob {
 		 * and many more.
 		 * Have a look at the programming guide for the Java API:
 		 *
-		 * http://flink.apache.org/docs/latest/apis/batch/index.html
-		 *
-		 * and the examples
-		 *
-		 * http://flink.apache.org/docs/latest/apis/batch/examples.html
+		 * http://flink.apache.org/docs/latest/apis/streaming/index.html
 		 *
 		 */
 
 		// execute program
-		env.execute("Flink Batch Java API Skeleton");
+		env.execute("Flink Streaming Java API Skeleton");
 	}
 }
