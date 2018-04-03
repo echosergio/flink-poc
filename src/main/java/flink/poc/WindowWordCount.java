@@ -17,7 +17,6 @@ public class WindowWordCount {
 				.socketTextStream("localhost", 9999)
 				.flatMap(new Splitter())
 				.keyBy(0)
-                //.countWindow(100,10)
 				.timeWindow(Time.seconds(5))
 				.sum(1);
 
@@ -30,7 +29,7 @@ public class WindowWordCount {
 		@Override
 		public void flatMap(String sentence, Collector<Tuple2<String, Integer>> out) throws Exception {
 			for (String word: sentence.split(" ")) {
-				out.collect(new Tuple2<String, Integer>(word, 1));
+				out.collect(new Tuple2<>(word, 1));
 			}
 		}
 	}
